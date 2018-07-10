@@ -1,0 +1,39 @@
+@import '../../shared/config';
+
+.dashboard__container {
+  width: 100%;
+  display: flex;
+  padding: 3rem 0;
+  justify-content: space-around;
+}
+
+.dashboard__sidenav {
+  flex: 0 0 20%;
+  box-shadow: 2px 2px 1px rgba($primary-text-color, 0.3);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__content {
+  flex: 0 0 70%;
+  box-shadow: -2px 2px 1px rgba($primary-text-color, 0.3);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.issues__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.issue__card {
+  border: 2px solid $primary-color;
+  border-radius: 3px;
+  height: 20rem;
+  width: 20rem;
+}

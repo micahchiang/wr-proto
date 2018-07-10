@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'app/shared/config';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px; 10/16 = 62.5%;
+}
+
+body {
+  color: $primary-text-color;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  padding: 3rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
