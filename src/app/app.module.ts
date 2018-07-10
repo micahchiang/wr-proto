@@ -9,6 +9,8 @@ import { AppHeaderComponent } from './core/app-header/app-header.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { IssueCardComponent } from './core/dashboard/issue-card/issue-card.component';
 import { ProfileComponent } from './core/profile/profile.component';
+import { LocalStorageService } from './shared/services/localstorage.service';
+import { WindowRef } from './shared/services/window-ref';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,12 @@ import { ProfileComponent } from './core/profile/profile.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES, {useHash: true})
   ],
-  providers: [ HttpClientModule, HttpClient],
+  providers: [
+    HttpClientModule,
+    HttpClient,
+    LocalStorageService,
+    WindowRef
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

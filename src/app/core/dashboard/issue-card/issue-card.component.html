@@ -1,9 +1,15 @@
 <div
   class="issue__card"
 >
-  <h2 class="issue__card-severity">
-    <i class="material-icons information__icon">error_outline</i>
-    Urgency:
+  <header class="issue__card-header">
+    <h2 class="issue__card-category">
+      {{ category }}
+    </h2>
+  </header>
+  <main class="issue__card-content">
+    <h2 class="issue__card-severity">
+      Urgency
+    </h2>
     <span [ngClass]="{
       'severity__high' : severity === 'HIGH',
       'severity__med' : severity === 'MEDIUM',
@@ -12,26 +18,21 @@
     >
       {{ severity }}
     </span>
-  </h2>
-  <h2 class="issue__card-category">
-    <i class="material-icons information__icon">tonality</i>
-    Category: {{ category }}
-  </h2>
-  <h2 class="issue__card-title">
-    <i class="material-icons information__icon">location_searching</i>
-    Resource: {{ resource }}
-  </h2>
-  <h2 class="issue__card-subtitle">
-    <i class="material-icons information__icon">gps_fixed</i>
-    Group: {{ resourceGroup }}
-  </h2>
-  <section class="issue__card-summary">
-    <h2 class="issue__card-summary-title">
-      <i class="material-icons information__icon">info_outline</i>
-      Summary
+    <h2 class="issue__card-title">
+      Resource
     </h2>
-    <p class="issue__card-summary-text">
-      {{ description }}
-    </p>
-  </section>
+    <span class="issue__card-title-desc">{{ resource }}</span>
+    <h2 class="issue__card-subtitle">
+      Group
+    </h2>
+    <span class="issue__card-subtitle-desc">{{ resourceGroup }}</span>
+    <section class="issue__card-summary">
+      <h2 class="issue__card-summary-title">
+        Summary
+      </h2>
+      <p class="issue__card-summary-text">
+        {{ description }}
+      </p>
+    </section>
+  </main>
 </div>

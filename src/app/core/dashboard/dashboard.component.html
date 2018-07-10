@@ -1,19 +1,21 @@
 <div class="dashboard__container">
-  <section class="dashboard__sidenav">
-    <h1 class="dashboard__sidenav-title">
-      Sort By
-    </h1>
-    <div class="sort__btn sort__btn-active">
-      Severity
-    </div>
-    <div class="sort__btn">
-      Category
-    </div>
-  </section>
   <main class="dashboard__content">
-    <h1 class="dashboard__content-title">
-      Outstanding Security Issues
-    </h1>
+    <section class="dashboard__content__header">
+      <h1 class="dashboard__content__header-title">
+        Outstanding Security Issues for
+      </h1>
+      <select
+        class="dashboard__content__header-select"
+        (change)="filterQuery($event.target.value)"
+      >
+        <option value="all">Everything</option>
+        <option value="Compute & apps">Compute & Apps</option>
+        <option value="Data security">Data security</option>
+        <option value="Identity & access">Identity & Access</option>
+        <option value="Logging & monitoring">Logging & Monitoring</option>
+        <option value="Networking">Networking</option>
+      </select>
+    </section>
     <section class="issues__container">
       <app-issue-card
         *ngFor="let issue of issues"

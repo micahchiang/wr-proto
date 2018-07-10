@@ -2,21 +2,11 @@
 $primary-color: #70ad47;
 $primary-text-color: #595959;
 $secondary-text-color: #999999;
+$tertiary-text-color: #E8E8E8;
 $white-color: #ffffff;
 $warning-low: #5B9F87;
 $warning-med: #EEA988;
 $warning-high: #D97C93;
-$desktop-width: 800px;
+$mobile-width: 800px;
+$tablet-width: 1260px;
 
-/***** Button Classes *****/
-.sort__btn {
-  padding: 2rem 3rem;
-  margin: 1.5rem 0;
-  font-size: 1.5rem;
-  text-align: center;
-
-  &-active {
-    background-color: rgba($primary-color, 0.5);
-    color: $white-color;
-  }
-}

@@ -1,35 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpService } from '../../shared/services/http.service';
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [HttpService]
+  providers: [DashboardService]
 })
 export class DashboardComponent implements OnInit {
 
   issues: Array<any>;
-  severities = ['HIGH', 'MEDIUM', 'LOW'];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.getData();
-  }
-
-  getData() {
-    this.httpService.getData().subscribe(data => {
-      this.issues = data;
-      this.sortIssues('severity');
+    this.dashboardService.getData().then(() => {
+      this.issues = this.dashboardService.getIssues();
     });
   }
 
-  sortIssues(option: string) {
-    if (option === 'severity') {
-      this.issues.sort((a, b) => this.severities.indexOf(a.severity) - this.severities.indexOf(b.severity););
-    }
+  filterQuery(category: string) {
+    this.issues = this.dashboardService.filterIssues(category);
   }
 
 }
