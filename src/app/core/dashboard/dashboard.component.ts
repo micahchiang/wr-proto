@@ -11,6 +11,7 @@ import { HttpService } from '../../shared/services/http.service';
 export class DashboardComponent implements OnInit {
 
   issues: Array<any>;
+  severities = ['HIGH', 'MEDIUM', 'LOW'];
 
   constructor(private httpService: HttpService) { }
 
@@ -21,8 +22,14 @@ export class DashboardComponent implements OnInit {
   getData() {
     this.httpService.getData().subscribe(data => {
       this.issues = data;
-      console.log('received data', this.issues);
+      this.sortIssues('severity');
     });
+  }
+
+  sortIssues(option: string) {
+    if (option === 'severity') {
+      this.issues.sort((a, b) => this.severities.indexOf(a.severity) - this.severities.indexOf(b.severity););
+    }
   }
 
 }

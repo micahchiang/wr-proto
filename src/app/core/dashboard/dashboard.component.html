@@ -1,40 +1,28 @@
 <div class="dashboard__container">
-  <aside class="dashboard__sidenav">
-    <h2 class="dashboard__sidenav-title">
-      Sort By:
-    </h2>
+  <section class="dashboard__sidenav">
+    <h1 class="dashboard__sidenav-title">
+      Sort By
+    </h1>
     <div class="sort__btn sort__btn-active">
       Severity
     </div>
     <div class="sort__btn">
       Category
     </div>
-  </aside>
+  </section>
   <main class="dashboard__content">
-    <h2 class="dashboard__content-title">
+    <h1 class="dashboard__content-title">
       Outstanding Security Issues
-    </h2>
+    </h1>
     <section class="issues__container">
-      <div
-        class="issue__card"
+      <app-issue-card
         *ngFor="let issue of issues"
-      >
-        <h2 class="issue__card-category">
-          Category: {{ issue.category }}
-        </h2>
-        <h2 class="issue__card-title">
-          Resource: {{ issue.resource }}
-        </h2>
-        <h4 class="issue__card-subtitle">
-          Group: {{ issue.resourcegroup }}
-        </h4>
-        <h4 class="issue__card-severity">
-          Urgency: {{ issue.severity }}
-        </h4>
-        <p class="issue__card-desc">
-          Summary: {{ issue.description }}
-        </p>
-      </div>
+        [category]="issue.category"
+        [description]="issue.description"
+        [resource]="issue.resource"
+        [resourceGroup]="issue.resourcegroup"
+        [severity]="issue.severity"
+      ></app-issue-card>
     </section>
   </main>
 </div>
