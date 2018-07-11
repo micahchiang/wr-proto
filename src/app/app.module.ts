@@ -9,6 +9,7 @@ import { AppHeaderComponent } from './core/app-header/app-header.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { IssueCardComponent } from './core/dashboard/issue-card/issue-card.component';
 import { ProfileComponent } from './core/profile/profile.component';
+import { HttpService } from './shared/services/http.service';
 import { LocalStorageService } from './shared/services/localstorage.service';
 import { WindowRef } from './shared/services/window-ref';
 
@@ -28,6 +29,7 @@ import { WindowRef } from './shared/services/window-ref';
   providers: [
     HttpClientModule,
     HttpClient,
+    HttpService,
     LocalStorageService,
     WindowRef
   ],
