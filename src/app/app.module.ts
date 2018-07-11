@@ -10,7 +10,7 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { IssueCardComponent } from './core/dashboard/issue-card/issue-card.component';
 import { ProfileComponent } from './core/profile/profile.component';
 import { HttpService } from './shared/services/http.service';
-import { LocalStorageService } from './shared/services/localstorage.service';
+import { SessionStorageService } from './shared/services/sessionstorage.service';
 import { WindowRef } from './shared/services/window-ref';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { WindowRef } from './shared/services/window-ref';
     HttpClientModule,
     HttpClient,
     HttpService,
-    LocalStorageService,
+    SessionStorageService,
     WindowRef
   ],
   bootstrap: [AppComponent]

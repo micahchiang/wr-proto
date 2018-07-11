@@ -1,6 +1,6 @@
 import { Injectable} from '@angular/core';
 import { HttpService } from '../../shared/services/http.service';
-import { LocalStorageService } from '../../shared/services/localstorage.service';
+import { SessionStorageService } from '../../shared/services/sessionstorage.service';
 
 @Injectable()
 export class DashboardService {
@@ -8,16 +8,26 @@ export class DashboardService {
   issues: Array<any>;
   severities = ['HIGH', 'MEDIUM', 'LOW'];
 
-  constructor(private httpService: HttpService, private localStorageService: LocalStorageService) { }
+  constructor(
+    private httpService: HttpService,
+    private sessionStorageService: SessionStorageService
+  ) { }
 
+  // To reduce http requests, check session storage first. If data exists, use that.
   getData() {
     return new Promise((resolve, reject) => {
-      this.httpService.getData().subscribe(data => {
-        this.localStorageService.setStorageItem('issues', data);
-        this.issues = this.localStorageService.getStorageItem('issues');
-        this.sortIssues('severity', this.issues); // As both a cloud admin or c-level exec, the most important thing is most urgent threats.
+      if (this.sessionStorageService.getStorageItem('issues')) {
+        this.issues = this.sessionStorageService.getStorageItem(('issues'));
+        this.sortIssues('severity', this.issues);
         resolve();
-      });
+      } else {
+        this.httpService.getData().subscribe(data => {
+          this.sessionStorageService.setStorageItem('issues', data);
+          this.issues = data;
+          this.sortIssues('severity', this.issues);
+          resolve();
+        });
+      }
     });
   }
 
@@ -27,16 +37,15 @@ export class DashboardService {
     }
   }
 
+  // instead of changing the original copy of issues in here, created a filtered copy and return it.
   filterIssues(option: string) {
     if (option === 'all') {
       return this.issues;
     }
-    // instead of changing the original copy of issues in here, created a filtered copy and return it.
-    const filteredIssues = this.localStorageService.getStorageItem('issues')
+    return this.sessionStorageService.getStorageItem('issues')
           .filter(issue => {
             return issue.category === option;
           }).sort((a, b) => this.severities.indexOf(a.severity) - this.severities.indexOf(b.severity));
-    return filteredIssues;
   }
 
   getIssues(): Array<object> {

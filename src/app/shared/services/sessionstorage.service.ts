@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { WindowRef } from './window-ref';
 
 @Injectable()
-export class LocalStorageService {
+export class SessionStorageService {
 
   storage: any;
 
   constructor(private window: WindowRef) {
-    this.storage = this.window.nativeWindow.localStorage;
+    this.storage = this.window.nativeWindow.sessionStorage;
   }
 
   setStorageItem(key: string, data: Array<any>) {

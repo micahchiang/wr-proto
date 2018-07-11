@@ -11,6 +11,10 @@
   -o-animation: 1s fade-in;
   animation: 1s fade-in;
 
+  @media only screen and (max-width: $tablet-width) {
+    width: 42rem;
+  }
+
   @media only screen and (max-width: $mobile-width) {
     width: 95%;
     margin: 1.5rem auto;
