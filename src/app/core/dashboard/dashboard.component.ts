@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from './dashboard.service';
+import { ErrorHandlingService } from '../../shared/services/errorhandling.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +13,16 @@ export class DashboardComponent implements OnInit {
 
   issues: Array<any>;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(
+    private dashboardService: DashboardService,
+    private errorHandlingService: ErrorHandlingService
+  ) { }
 
   ngOnInit() {
     this.dashboardService.getData().then(() => {
       this.issues = this.dashboardService.getIssues();
+    }).catch(e => {
+      this.errorHandlingService.showError(e);
     });
   }
 

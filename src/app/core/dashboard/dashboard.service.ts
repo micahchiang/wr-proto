@@ -26,6 +26,8 @@ export class DashboardService {
           this.issues = data;
           this.sortIssues('severity', this.issues);
           resolve();
+        }, error => {
+          reject(error);
         });
       }
     });
